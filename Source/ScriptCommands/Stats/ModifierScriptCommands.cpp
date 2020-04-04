@@ -1,5 +1,5 @@
-#include "Lua/ScriptCommands/Stats/ModifierScriptCommands.h"
-#include "Lua/ScriptCommands/ScriptCommandUtils.h"
+#include "ScriptCommands/Stats/ModifierScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
 
 #include "Stats/Modifier.h"
 
@@ -22,11 +22,12 @@ namespace MCF::Lua::Stats::ModifierScriptCommands
   }
 
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     using Modifier = MCF::Stats::Modifier;
 
     Celeste::Lua::registerScriptableObjectUserType<Modifier>(
+      state,
       "Modifier",
       sol::base_classes, sol::bases<Celeste::ScriptableObject>(),
       "getAmount", &Modifier::getAmount,

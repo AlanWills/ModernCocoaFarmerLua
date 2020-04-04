@@ -1,14 +1,14 @@
-#include "Lua/ScriptCommands/Persistence/PersistenceScriptCommands.h"
-#include "Lua/ScriptCommands/Persistence/DataStoreScriptCommands.h"
-#include "Lua/ScriptCommands/Persistence/DataObjectHandleScriptCommands.h"
+#include "ScriptCommands/Persistence/PersistenceScriptCommands.h"
+#include "ScriptCommands/Persistence/DataStoreScriptCommands.h"
+#include "ScriptCommands/Persistence/DataObjectHandleScriptCommands.h"
 
 
 namespace MCF::Lua::Persistence::ScriptCommands
 {
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
-    DataStoreScriptCommands::initialize();
-    DataObjectHandleScriptCommands::initialize();
+    DataStoreScriptCommands::initialize(state);
+    DataObjectHandleScriptCommands::initialize(state);
   }
 }

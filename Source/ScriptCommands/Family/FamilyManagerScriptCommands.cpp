@@ -1,5 +1,5 @@
-#include "Lua/ScriptCommands/Family/FamilyManagerScriptCommands.h"
-#include "Lua/ScriptCommands/ScriptCommandUtils.h"
+#include "ScriptCommands/Family/FamilyManagerScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
 
 #include "Family/FamilyManager.h"
 #include "Family/Child.h"
@@ -32,9 +32,10 @@ namespace MCF::Lua::Family::FamilyManagerScriptCommands
   }
 
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     Celeste::Lua::registerScriptableObjectUserType<FamilyManager>(
+      state,
       FamilyManager::type_name(),
       sol::base_classes, sol::bases<Celeste::ScriptableObject>(),
       "setDataStore", &FamilyManager::setDataStore,

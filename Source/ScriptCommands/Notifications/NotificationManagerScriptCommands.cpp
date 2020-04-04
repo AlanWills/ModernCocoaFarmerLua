@@ -1,5 +1,5 @@
-#include "Lua/ScriptCommands/Notifications/NotificationManagerScriptCommands.h"
-#include "Lua/ScriptCommands/ScriptCommandUtils.h"
+#include "ScriptCommands/Notifications/NotificationManagerScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
 
 #include "Notifications/NotificationManager.h"
 #include "Notifications/Notification.h"
@@ -31,9 +31,10 @@ namespace MCF::Lua::Notifications::NotificationManagerScriptCommands
   }
 
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     Celeste::Lua::registerScriptableObjectUserType<NotificationManager>(
+      state,
       NotificationManager::type_name(),
       sol::base_classes, sol::bases<Celeste::ScriptableObject>(),
       "subscribeOnNotificationSentCallback", &Internals::subscribeOnNotificationSentCallback);

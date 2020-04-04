@@ -1,5 +1,5 @@
-#include "Lua/ScriptCommands/GameEvents/GameEventManagerScriptCommands.h"
-#include "Lua/ScriptCommands/ScriptCommandUtils.h"
+#include "ScriptCommands/GameEvents/GameEventManagerScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
 
 #include "GameEvents/GameEventManager.h"
 #include "GameEvents/GameEvent.h"
@@ -35,9 +35,10 @@ namespace MCF::Lua::GameEvents::GameEventManagerScriptCommands
   }
 
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     Celeste::Lua::registerScriptableObjectUserType<GameEventManager>(
+      state,
       GameEventManager::type_name(),
       sol::base_classes, sol::bases<Celeste::ScriptableObject>(),
       "setFamilyManager", &GameEventManager::setFamilyManager,

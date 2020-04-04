@@ -1,5 +1,5 @@
-#include "Lua/ScriptCommands/Persistence/DataStoreScriptCommands.h"
-#include "UtilityHeaders/ScriptCommandHeaders.h"
+#include "ScriptCommands/Persistence/DataStoreScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
 #include "Persistence/DataStore.h"
 #include "Persistence/DataObjectHandle.h"
 #include "Persistence/DataArrayHandle.h"
@@ -78,11 +78,12 @@ namespace MCF::Lua::Persistence::DataStoreScriptCommands
   }
 
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     using DataStore = MCF::Persistence::DataStore;
 
     Celeste::Lua::registerUserType<DataStore>(
+      state,
       "DataStore",
       "loadOrCreate", sol::factories(&Internals::loadOrCreate),
       "create", &Internals::create,

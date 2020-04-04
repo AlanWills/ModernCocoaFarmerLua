@@ -1,5 +1,5 @@
-#include "Lua/ScriptCommands/Persistence/DataObjectHandleScriptCommands.h"
-#include "UtilityHeaders/ScriptCommandHeaders.h"
+#include "ScriptCommands/Persistence/DataObjectHandleScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
 #include "Persistence/DataObjectHandle.h"
 
 
@@ -22,11 +22,12 @@ namespace MCF::Lua::Persistence::DataObjectHandleScriptCommands
   }
 
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     using DataObjectHandle = MCF::Persistence::DataObjectHandle;
 
     Celeste::Lua::registerUserType<DataObjectHandle>(
+      state,
       "DataObjectHandle",
       // Is
       "isBool", &DataObjectHandle::is<bool>,

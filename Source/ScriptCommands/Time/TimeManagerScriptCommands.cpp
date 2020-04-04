@@ -1,5 +1,5 @@
-#include "Lua/ScriptCommands/Time/TimeManagerScriptCommands.h"
-#include "UtilityHeaders/ScriptCommandHeaders.h"
+#include "ScriptCommands/Time/TimeManagerScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
 
 #include "Time/TimeManager.h"
 
@@ -30,9 +30,10 @@ namespace MCF::Lua::Time::TimeManagerScriptCommands
   }
 
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     Celeste::Lua::registerScriptableObjectUserType<TimeManager>(
+      state,
       TimeManager::type_name(),
       sol::base_classes, sol::bases<Celeste::ScriptableObject>(),
       "setDataStore", &TimeManager::setDataStore,

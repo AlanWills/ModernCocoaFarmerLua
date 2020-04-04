@@ -1,5 +1,5 @@
-#include "Lua/ScriptCommands/Time/TimeNotifierScriptCommands.h"
-#include "Lua/ScriptCommands/ScriptCommandUtils.h"
+#include "ScriptCommands/Time/TimeNotifierScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
 
 #include "Time/TimeNotifier.h"
 
@@ -25,9 +25,10 @@ namespace MCF::Lua::Time::TimeNotifierScriptCommands
   }
 
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     Celeste::Lua::registerUserType<TimeNotifier>(
+      state,
       "TimeNotifier",
       sol::base_classes, sol::bases<Celeste::Component, Celeste::Entity, Celeste::Object>(),
       "subscribeOnTimeChangedCallback", &subscribeOnTimeChangedCallback);

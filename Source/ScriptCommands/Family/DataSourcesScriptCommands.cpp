@@ -1,5 +1,5 @@
-#include "Lua/ScriptCommands/Family/FamilyManagerScriptCommands.h"
-#include "UtilityHeaders/ScriptCommandHeaders.h"
+#include "ScriptCommands/Family/FamilyManagerScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
 
 #include "Family/DataSources.h"
 
@@ -9,9 +9,8 @@ using namespace MCF::Family;
 namespace MCF::Lua::Family::DataSourcesScriptCommands
 {
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
-    sol::state& state = Celeste::Lua::LuaState::instance();
     sol::table dataSources = state.create_named_table("FamilyDataSources");
     dataSources["HAS_SELECTED_CHILD"] = DataSources::HAS_SELECTED_CHILD;
     dataSources["SELECTED_CHILD_NAME"] = DataSources::SELECTED_CHILD_NAME;

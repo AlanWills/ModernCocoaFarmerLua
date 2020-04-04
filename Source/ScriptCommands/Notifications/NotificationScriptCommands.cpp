@@ -1,5 +1,5 @@
-#include "Lua/ScriptCommands/Notifications/NotificationScriptCommands.h"
-#include "Lua/ScriptCommands/ScriptCommandUtils.h"
+#include "ScriptCommands/Notifications/NotificationScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
 
 #include "Notifications/Notification.h"
 
@@ -18,9 +18,10 @@ namespace sol
 namespace MCF::Lua::Notifications::NotificationScriptCommands
 {
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     Celeste::Lua::registerScriptableObjectUserType<Notification>(
+      state,
       Notification::type_name(),
       sol::base_classes, sol::bases<Celeste::ScriptableObject>(),
       "getDescription", &Notification::getDescription,

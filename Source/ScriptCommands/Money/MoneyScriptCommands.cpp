@@ -1,14 +1,14 @@
-#include "Lua/ScriptCommands/Money/MoneyScriptCommands.h"
-#include "Lua/ScriptCommands/Money/DataSourcesScriptCommands.h"
-#include "Lua/ScriptCommands/Money/MoneyManagerScriptCommands.h"
+#include "ScriptCommands/Money/MoneyScriptCommands.h"
+#include "ScriptCommands/Money/DataSourcesScriptCommands.h"
+#include "ScriptCommands/Money/MoneyManagerScriptCommands.h"
 
 
 namespace MCF::Lua::Money::ScriptCommands
 {
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
-    DataSourcesScriptCommands::initialize();
-    MoneyManagerScriptCommands::initialize();
+    DataSourcesScriptCommands::initialize(state);
+    MoneyManagerScriptCommands::initialize(state);
   }
 }

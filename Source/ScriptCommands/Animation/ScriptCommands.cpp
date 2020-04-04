@@ -1,12 +1,12 @@
-#include "Lua/ScriptCommands/Animation/ScriptCommands.h"
-#include "Lua/ScriptCommands/Animation/ChildWalkingToLocationControllerScriptCommands.h"
+#include "ScriptCommands/Animation/ScriptCommands.h"
+#include "ScriptCommands/Animation/ChildWalkingToLocationControllerScriptCommands.h"
 
 
 namespace MCF::Lua::Animation::ScriptCommands
 {
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
-    ChildWalkingToLocationControllerScriptCommands::initialize();
+    ChildWalkingToLocationControllerScriptCommands::initialize(state);
   }
 }

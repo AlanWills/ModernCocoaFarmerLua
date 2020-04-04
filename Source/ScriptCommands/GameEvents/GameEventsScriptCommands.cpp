@@ -1,14 +1,14 @@
-#include "Lua/ScriptCommands/GameEvents/GameEventsScriptCommands.h"
-#include "Lua/ScriptCommands/GameEvents/GameEventManagerScriptCommands.h"
-#include "Lua/ScriptCommands/GameEvents/GameEventScriptCommands.h"
+#include "ScriptCommands/GameEvents/GameEventsScriptCommands.h"
+#include "ScriptCommands/GameEvents/GameEventManagerScriptCommands.h"
+#include "ScriptCommands/GameEvents/GameEventScriptCommands.h"
 
 
 namespace MCF::Lua::GameEvents::ScriptCommands
 {
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
-    GameEventManagerScriptCommands::initialize();
-    GameEventScriptCommands::initialize();
+    GameEventManagerScriptCommands::initialize(state);
+    GameEventScriptCommands::initialize(state);
   }
 }

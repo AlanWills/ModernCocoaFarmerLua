@@ -1,7 +1,12 @@
 #pragma once
 
 
+namespace sol
+{
+  class state;
+}
+
 namespace MCF::Lua::Persistence::DataObjectHandleScriptCommands
 {
-  void initialize();
+  void initialize(sol::state& state);
 }

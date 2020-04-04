@@ -1,4 +1,4 @@
-#include "Lua/ScriptCommands/Money/MoneyManagerScriptCommands.h"
+#include "ScriptCommands/Money/MoneyManagerScriptCommands.h"
 #include "ScriptCommands/ScriptCommandUtils.h"
 #include "Money/MoneyManager.h"
 #include "Stats/Modifier.h"
@@ -16,9 +16,10 @@ namespace sol
 namespace MCF::Lua::Money::MoneyManagerScriptCommands
 {
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     Celeste::Lua::registerScriptableObjectUserType<MoneyManager>(
+      state,
       MoneyManager::type_name(),
       sol::base_classes, sol::bases<Celeste::ScriptableObject>(),
       "setDataStore", &MoneyManager::setDataStore,

@@ -1,5 +1,5 @@
-#include "Lua/ScriptCommands/Locations/LocationScriptCommands.h"
-#include "Lua/ScriptCommands/ScriptCommandUtils.h"
+#include "ScriptCommands/Locations/LocationScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
 
 #include "Locations/Location.h"
 #include "Family/Child.h"
@@ -39,9 +39,10 @@ namespace MCF::Lua::Locations::LocationScriptCommands
   }
 
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     Celeste::Lua::registerScriptableObjectUserType<Location>(
+      state,
       "LocationInformation",
       sol::base_classes, sol::bases<Celeste::ScriptableObject>(),
       "getDescription", &Location::getDescription,

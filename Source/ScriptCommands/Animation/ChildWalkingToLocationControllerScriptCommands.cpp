@@ -1,6 +1,5 @@
-#include "Lua/ScriptCommands/Animation/ChildWalkingToLocationControllerScriptCommands.h"
-#include "Lua/ScriptCommands/ScriptCommandUtils.h"
-
+#include "ScriptCommands/Animation/ChildWalkingToLocationControllerScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
 #include "Animation/ChildWalkingToLocationController.h"
 
 
@@ -13,11 +12,12 @@ namespace sol
 namespace MCF::Lua::Animation::ChildWalkingToLocationControllerScriptCommands
 {
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     using ChildWalkingToLocationController = MCF::Animation::ChildWalkingToLocationController;
 
     Celeste::Lua::registerUserType<ChildWalkingToLocationController>(
+      state,
       ChildWalkingToLocationController::type_name(),
       "getSpeed", &ChildWalkingToLocationController::getSpeed,
       "setSpeed", &ChildWalkingToLocationController::setSpeed,

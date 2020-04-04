@@ -1,5 +1,5 @@
-#include "Lua/ScriptCommands/Stats/DataSourcesScriptCommands.h"
-#include "UtilityHeaders/ScriptCommandHeaders.h"
+#include "ScriptCommands/Stats/DataSourcesScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
 
 #include "Stats/DataSources.h"
 
@@ -9,9 +9,8 @@ using namespace MCF::Stats;
 namespace MCF::Lua::Stats::DataSourcesScriptCommands
 {
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
-    sol::state& state = Celeste::Lua::LuaState::instance();
     sol::table dataSources = state.create_named_table("StatsDataSources");
     dataSources["HEALTH"] = DataSources::HEALTH;
     dataSources["SAFETY"] = DataSources::SAFETY;

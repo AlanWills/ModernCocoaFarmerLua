@@ -1,17 +1,17 @@
-#include "Lua/ScriptCommands/GameEvents/GameEventManagerScriptCommands.h"
-#include "Lua/ScriptCommands/ScriptCommandUtils.h"
+#include "ScriptCommands/GameEvents/GameEventManagerScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
 
-#include "Lua/ScriptCommands/Notifications/NotificationsScriptCommands.h"
-#include "Lua/ScriptCommands/Notifications/NotificationScriptCommands.h"
-#include "Lua/ScriptCommands/Notifications/NotificationManagerScriptCommands.h"
+#include "ScriptCommands/Notifications/NotificationsScriptCommands.h"
+#include "ScriptCommands/Notifications/NotificationScriptCommands.h"
+#include "ScriptCommands/Notifications/NotificationManagerScriptCommands.h"
 
 
 namespace MCF::Lua::Notifications::ScriptCommands
 {
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
-    NotificationScriptCommands::initialize();
-    NotificationManagerScriptCommands::initialize();
+    NotificationScriptCommands::initialize(state);
+    NotificationManagerScriptCommands::initialize(state);
   }
 }

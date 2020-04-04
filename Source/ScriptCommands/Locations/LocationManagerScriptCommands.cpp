@@ -1,5 +1,5 @@
-#include "Lua/ScriptCommands/Locations/LocationManagerScriptCommands.h"
-#include "Lua/ScriptCommands/ScriptCommandUtils.h"
+#include "ScriptCommands/Locations/LocationManagerScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
 
 #include "Locations/LocationsManager.h"
 #include "Locations/Location.h"
@@ -44,11 +44,12 @@ namespace MCF::Lua::Locations::LocationManagerScriptCommands
   }
 
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     using LocationsManager = MCF::Locations::LocationsManager;
 
     Celeste::Lua::registerScriptableObjectUserType<LocationsManager>(
+      state,
       LocationsManager::type_name(),
       sol::base_classes, sol::bases<Celeste::ScriptableObject>(),
       "setDataStore", &LocationsManager::setDataStore,

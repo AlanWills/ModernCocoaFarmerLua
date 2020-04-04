@@ -1,14 +1,14 @@
-#include "Lua/ScriptCommands/Stats/StatsScriptCommands.h"
-#include "Lua/ScriptCommands/Stats/DataSourcesScriptCommands.h"
-#include "Lua/ScriptCommands/Stats/ModifierScriptCommands.h"
+#include "ScriptCommands/Stats/StatsScriptCommands.h"
+#include "ScriptCommands/Stats/DataSourcesScriptCommands.h"
+#include "ScriptCommands/Stats/ModifierScriptCommands.h"
 
 
 namespace MCF::Lua::Stats::ScriptCommands
 {
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
-    DataSourcesScriptCommands::initialize();
-    ModifierScriptCommands::initialize();
+    DataSourcesScriptCommands::initialize(state);
+    ModifierScriptCommands::initialize(state);
   }
 }

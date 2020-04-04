@@ -1,5 +1,5 @@
-#include "Lua/ScriptCommands/Family/ChildScriptCommands.h"
-#include "Lua/ScriptCommands/ScriptCommandUtils.h"
+#include "ScriptCommands/Family/ChildScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
 
 #include "Family/Child.h"
 #include "Stats/Modifier.h"
@@ -16,9 +16,10 @@ namespace sol
 namespace MCF::Lua::Family::ChildScriptCommands
 {
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     Celeste::Lua::registerScriptableObjectUserType<Child>(
+      state,
       Child::type_name(),
       sol::base_classes, sol::bases<Celeste::ScriptableObject>(),
       "getHealth", &Child::getHealth,
