@@ -22,7 +22,7 @@ namespace MCF::Lua::Locations::LocationManagerScriptCommands
     void activateLocation(LocationsManager& locationsManager, const std::string& locationName)
     {
       observer_ptr<Location> location = locationsManager.findLocation(locationName);
-      ASSERT(location)
+      ASSERT(location);
 
       if (location != nullptr)
       {

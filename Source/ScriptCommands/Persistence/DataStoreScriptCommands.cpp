@@ -4,7 +4,7 @@
 #include "Persistence/DataObjectHandle.h"
 #include "Persistence/DataArrayHandle.h"
 #include "Resources/ResourceUtils.h"
-#include "Debug/Assert.h"
+#include "Assert/Assert.h"
 
 
 namespace sol
