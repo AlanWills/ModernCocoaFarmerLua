@@ -3,17 +3,33 @@
 
 #include "Stats/Modifier.h"
 
+using namespace MCF::Stats;
+
 
 namespace sol
 {
   template <>
-  struct is_to_stringable<MCF::Stats::Modifier> : std::false_type {};
+  struct is_to_stringable<Modifier> : std::false_type {};
 }
 
 namespace MCF::Lua::Stats::ModifierScriptCommands
 {
   namespace Internals
   {
+    //------------------------------------------------------------------------------------------------
+    void setChangeType(Modifier& modifier, const std::string& changeTypeString)
+    {
+      ChangeType changeType;
+      if (Celeste::deserialize<ChangeType>(changeTypeString, changeType))
+      {
+        modifier.setChangeType(changeType);
+      }
+      else
+      {
+        ASSERT_FAIL();
+      }
+    }
+
     //------------------------------------------------------------------------------------------------
     bool isDeltaChange(MCF::Stats::Modifier& modifier)
     {
@@ -31,6 +47,8 @@ namespace MCF::Lua::Stats::ModifierScriptCommands
       "Modifier",
       sol::base_classes, sol::bases<Celeste::ScriptableObject>(),
       "getAmount", &Modifier::getAmount,
+      "setAmount", &Modifier::setAmount,
+      "setChangeType", &Internals::setChangeType,
       "isDeltaChange", &Internals::isDeltaChange);
   }
 }

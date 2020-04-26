@@ -3,6 +3,10 @@
 
 #include "Notifications/Notification.h"
 
+#include "Resources/ResourceManager.h"
+#include "Resources/ResourceUtils.h"
+
+using namespace Celeste::Resources;
 using namespace MCF::Notifications;
 
 
@@ -17,6 +21,15 @@ namespace sol
 
 namespace MCF::Lua::Notifications::NotificationScriptCommands
 {
+  namespace Internals
+  {
+    //------------------------------------------------------------------------------------------------
+    void setIcon(Notification& notification, const std::string& texturePath)
+    {
+      notification.setIcon(getResourceManager().load<Texture2D>(texturePath));
+    }
+  }
+
   //------------------------------------------------------------------------------------------------
   void initialize(sol::state& state)
   {
@@ -25,6 +38,8 @@ namespace MCF::Lua::Notifications::NotificationScriptCommands
       Notification::type_name(),
       sol::base_classes, sol::bases<Celeste::ScriptableObject>(),
       "getDescription", &Notification::getDescription,
-      "getIcon", &Notification::getIcon);
+      "setDescription", &Notification::setDescription,
+      "getIcon", &Notification::getIcon,
+      "setIcon", &Internals::setIcon);
   }
 }

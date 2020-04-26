@@ -15,6 +15,15 @@ namespace sol
 
 namespace MCF::Lua::Money::MoneyManagerScriptCommands
 {
+  namespace Internals
+  {
+    //------------------------------------------------------------------------------------------------
+    void addMoney(MoneyManager& moneyManager, int amount)
+    {
+      moneyManager.setMoney(moneyManager.getMoney() + amount);
+    }
+  }
+
   //------------------------------------------------------------------------------------------------
   void initialize(sol::state& state)
   {
@@ -25,6 +34,8 @@ namespace MCF::Lua::Money::MoneyManagerScriptCommands
       "setDataStore", &MoneyManager::setDataStore,
       "getMoney", &MoneyManager::getMoney,
       "setMoney", &MoneyManager::setMoney,
-      "applyMoneyModifier", &MoneyManager::applyMoneyModifier);
+      "addMoney", &Internals::addMoney,
+      "applyMoneyModifier", &MoneyManager::applyMoneyModifier,
+      "getSalaryLevel", &MoneyManager::getSalaryLevel);
   }
 }

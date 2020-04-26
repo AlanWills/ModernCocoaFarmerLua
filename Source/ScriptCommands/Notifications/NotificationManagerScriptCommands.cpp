@@ -37,6 +37,7 @@ namespace MCF::Lua::Notifications::NotificationManagerScriptCommands
       state,
       NotificationManager::type_name(),
       sol::base_classes, sol::bases<Celeste::ScriptableObject>(),
+      "sendNotification", &NotificationManager::sendNotification,
       "subscribeOnNotificationSentCallback", &Internals::subscribeOnNotificationSentCallback);
   }
 }
